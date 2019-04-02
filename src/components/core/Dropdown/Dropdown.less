@@ -1,0 +1,29 @@
+@import (reference) "../../../styles/styles.less";
+@import (reference, optional) "@{THEME_PATH}/core/Dropdown.less";
+
+.dropdown               { .dropdown(); }
+.dropdown-menu          { .dropdown-menu(); }
+.dropdown-menu.show     { &:extend(.dropdown-menu.show); }
+.dropdown-menu-right    { .dropdown-menu-right(); }
+.dropdown-item          { .dropdown-item(); }
+.dropdown-divider       { .dropdown-divider(); }
+.dropdown-toggle        { &:extend(.dropdown-toggle all); }
+.btn                    { .btn(); }  
+
+.dropdown.w-100 {
+  width: 100%;
+  .dropdown-toggle {
+    width: 100%;
+  }
+}
+
+.dropdown-height(@items, @item-height) {
+  max-height: @items * @item-height;
+}
+
+.dropdown-scrollable {
+  overflow-y: auto;
+  .dropdown-divider {
+    margin-top: -1px;
+  }
+}

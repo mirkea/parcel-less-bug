@@ -1,0 +1,73 @@
+@import (reference) "../../../styles/styles.less";
+
+.tag-hover() {
+    .name{
+        margin-right: 16px;
+        margin-left:4px;
+    }
+    .remove{
+        display:inline;
+        opacity: 1;
+        margin-right: 2px;
+    }
+}
+
+
+.taginput-wrapper{
+    position: relative;
+
+    .input-wrapper{
+        position: relative;
+        display: inline-block;
+    }
+    .input{
+        width:100px;
+        display: inline-block;
+        margin: 0;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        background-color: transparent;
+        margin-bottom: 10px;
+
+        line-height: 17px;
+        font-size: 14px;
+        &::placeholder {
+            opacity: 1;
+          }
+        &.focused{
+            cursor: auto;
+        }
+    }
+    .tag{
+        display: inline-block;
+        padding: 3px;
+        cursor: pointer;
+        user-select: none;
+        margin-right: 12px;
+        font-size: 13px;
+        position: relative;
+        transition: 0.1s margin ease-in-out;
+        margin-bottom: 10px;
+        background-color: @primary;
+        color: #FFF;
+        .name{
+            margin-right: 10px;
+            margin-left:10px;
+            position: relative;
+            transition: 0.1s margin ease-in-out;
+        }
+        .remove{
+            position: absolute;
+            opacity: 0;
+            top:9px;
+            right: 3px;
+            transition: 0.1s opacity ease-in-out;
+        }
+
+        &.toggled,
+        &:hover {
+            .tag-hover();
+        }
+    }
+}

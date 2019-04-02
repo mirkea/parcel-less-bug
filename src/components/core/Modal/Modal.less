@@ -1,0 +1,48 @@
+@import (reference) "../../../styles/styles.less";
+@import (reference, optional) "@{THEME_PATH}/core/Modal.less";
+
+// .show                   { .show; }
+.d-block                { .d-block; }
+.modal-dialog           { &:extend(.modal-dialog all); }
+.modal-dialog-centered  { .modal-dialog-centered; }
+.modal-content          { .modal-content; }
+.align-items-center     { .align-items-center; }
+
+
+
+.modal {
+    &:extend(.modal all);
+    &.fade {
+		background-color: rgba(@modal-backdrop-bg, @modal-backdrop-opacity);
+	}
+}
+.modal-header {
+    .modal-header;
+    .align-items-start;
+}
+.modal-body {
+    .modal-body;
+    padding-top: @spacer-1;
+    padding-bottom: @spacer-4;
+}
+
+.modal-footer {
+    .modal-footer;
+    background-color: @body-bg; 
+    border-radius: 0 0 @modal-content-border-radius @modal-content-border-radius;
+}
+
+.close {
+    &:extend(.close all); 
+    position: relative;
+    text-shadow: none; 
+    font-weight: 300;
+    font-size: 26px;
+    padding: @spacer-3 @spacer-3 0;
+    margin-top: -@spacer-3;
+    margin-right: -@spacer-3;
+    // line-height: 12px;
+}
+.fade {
+    background-color: fade(@black, 50%);
+}

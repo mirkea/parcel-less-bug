@@ -1,0 +1,103 @@
+@import (reference) "_variables.less";
+
+.custom-control(@padding, @align, @other-align, @symbol-size, @symbol-y) {
+	padding-@{align}: @padding;
+	padding-@{other-align}: 0;
+	.custom-control-label::before {
+		width: @symbol-size;
+		height: @symbol-size;
+		top: @symbol-y;
+		@{other-align}: auto;
+	}
+	.custom-control-input {
+		@{align}: 0;
+	}
+	.custom-control-label::before {
+		@{align}: -1 * @padding;
+	}
+}
+
+.custom-control {
+	padding-left: 20px;
+	.custom-control(20px, left, right, 14px, 4px);
+	&.custom-control-right {
+		.custom-control(20px, right, left, 14px, 4px);
+	}
+
+	&.custom-control-inline {
+		margin-right: 0;
+	}
+}
+.custom-control-input {
+	width: 0;
+	height: 0;
+	overflow: hidden;
+}
+.custom-control-label {
+	user-select: none;
+	&,
+	&::before,
+	&::after {
+		cursor: pointer;
+	}
+	&::before {
+		border: 1px solid @text-muted;
+		box-sizing: border-box;
+		background-color: #FFF;
+		// top: 4px;
+	}
+	// -------------------------------------------------------- focus / active
+	.custom-control-input:focus ~ &::before {
+		box-shadow: none;
+	}
+	.custom-control-input:active ~ &::before { 
+		border-color: @primary;
+		background-color: #FFF;
+	}
+	// -------------------------------------------------------- disabled
+	.custom-control-input:disabled + & {
+		cursor: not-allowed;
+		&::before {
+			background-color: @body-bg;
+			border-color: @text-muted;
+		}
+	}
+	// -------------------------------------------------------- checkbox specific
+	.custom-checkbox &::before {
+		border-radius: 3px;
+	}
+	.custom-checkbox .custom-control-input:checked ~ & {
+		&::before {
+			border-color: @primary;
+		}
+		&::after {
+			top: 5px;
+			left: -19px;
+		}
+	}
+	.custom-checkbox.custom-control-right .custom-control-input:checked ~ &::after {
+		left: auto;
+		right: -20px;
+	}
+	// -------------------------------------------------------- radio specific
+	.custom-radio .custom-control-input:checked ~ & {
+		&::before {
+			background-color: #FFF;
+		}
+		&::after {
+			background-image: none;
+			width: 8px;
+			height: 8px;
+			border-radius: 8px;
+			background:  @primary;
+			left: -17px;
+			top: 7px;
+		}
+	}
+	.custom-radio.custom-control-right .custom-control-input:checked ~ &::after {
+		left: auto;
+		right: -17px;
+	}
+}
+
+

@@ -1,0 +1,106 @@
+@import (reference) "../../../styles/_variables.less";
+@import (reference) "../../../styles/_custom-control.less"; 
+
+.custom-control-input   { &:extend(.custom-control-label .custom-control-input); }
+
+.switch-size(@width, @height, @border, @spacing) {
+	min-height: @height;
+
+	.switch-indicator {
+		width: @width;
+		height: @height;
+		border-radius: @width;
+		cursor: pointer;
+		&:after {
+			width: (@height - 2 * @border);
+			height: (@height - 2 * @border);
+			top: @border;
+			border-radius: @height;
+			left: @border;
+		}
+	}
+	input {
+		width: 0;
+		height: 0;
+		overflow: hidden;
+	}
+	&:not(.switch-right) {
+		padding-left: @width;
+		input {
+			left: 0;
+		}
+		.switch-label {
+			padding-left: @spacing;
+		}
+	}
+	&.switch-right {
+		padding-right: @width;
+		input {
+			right: 0;
+		}
+		.switch-label {
+			padding-right: @spacing;
+		}
+
+	}
+	input:checked + .switch-indicator:after {
+		left: @width - @height + @border;
+	}
+}
+
+
+.switch {
+	.switch-size(42px, 24px, 2px, 7px);
+	position: relative;
+	cursor: pointer;
+	user-select: none;
+	vertical-align: top;
+
+	input { 
+		position: absolute;
+		display: block;
+		z-index: 2;
+		cursor: pointer;
+		opacity: 0;
+		top: 0;
+
+		&:checked + .switch-indicator {
+			background-color: @primary;
+		}
+		&:disabled {
+			cursor: not-allowed;
+			& + .switch-indicator {
+				cursor: not-allowed;
+				background-color: @body-bg;
+			}
+		}
+	}
+	&:not(.switch-right)  .switch-indicator {
+		left: 0;
+	}
+	&.switch-right .switch-indicator {
+		right: 0;
+	}
+	.switch-indicator { 
+		display: block;
+		background: @text-muted;
+		position: relative;
+		transition: background-color 0.1s linear;
+		position: absolute;
+		top: 0;
+
+		&:after {
+			display: block;
+			content: ' ';
+			cursor: pointer;
+			position:  absolute;
+			background: #fff;
+			transition: all 0.1s ease-in-out;
+		}
+	}
+	.switch-label {
+		vertical-align: middle;
+		cursor: pointer;
+	}
+
+}

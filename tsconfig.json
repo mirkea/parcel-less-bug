@@ -1,0 +1,24 @@
+{
+   "compilerOptions": {
+      "module": "ESNext",
+      "jsx": "react",
+      "jsxFactory": "h",
+      "moduleResolution": "node",
+      "plugins": [
+         { "name": "typescript-tslint-plugin" }
+      ]
+   },
+   "exclude": [
+      "node_modules",
+      "**/node_modules/*",
+      ".cache",
+      "**/dist",
+      "**/.history",
+      "**/dist/*",
+   ],
+   "include": [
+      "**/*.ts",
+      "**/*.tsx",
+      "./src/externals.d.ts"
+  ]
+}

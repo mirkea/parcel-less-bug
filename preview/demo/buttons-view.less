@@ -1,0 +1,26 @@
+@import (reference) "../../src/styles/styles.less";
+@import (reference) "../../src/components/core/Button/Button.less";
+@import "../../src/styles/base.less";
+
+body > div {
+   padding: 50px;
+}
+
+[data-key="round"] button {
+   .btn-rounded;
+} 
+[data-key="noRole"] {
+   .btn-outline-primary();
+   .btn-rounded();
+}
+:global {
+   [data-key="outline"] button {
+      .btn-rounded();
+      .btn-outline-primary;
+   }
+   [data-key="boss"] button {
+      &:extend(.btn-group button:not(.btn-rounded) all);
+   }
+}
+
+

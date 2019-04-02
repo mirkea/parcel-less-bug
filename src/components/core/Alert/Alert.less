@@ -1,0 +1,88 @@
+@import (reference) "../../../styles/styles.less";
+@import (reference, optional) "@{THEME_PATH}/core/Alert.less";
+
+
+.alert                  { .alert; }
+// .alert-body             { .alert-body; }
+.alert-heading          { .alert-heading; }
+.alert-dismissible      { .alert-dismissible; }
+// .alert-fixed            { .alert-fixed; }
+
+.alert-danger           { .alert-danger; }
+.alert-warning          { .alert-warning; }
+.alert-success          { .alert-success; }
+.alert-light            { .alert-light; }
+
+
+.close {
+   &:extend(.close all); 
+   padding: @spacer-1 @spacer-3;
+   // margin-right: -1 * @spacer-3;
+   position: relative;
+   text-shadow: none;
+   font-weight: 300; 
+   font-size: 26px;
+
+}
+
+.alert-color(@color) {
+	.alert-heading { color: @color; }
+	border-color: @color;
+}
+
+.alert {
+	padding: @spacer-2;
+	margin-bottom: 0;
+	font-size: @btn-font-size;
+	background-color: transparent;
+	border: 1px solid @text-muted;
+	color: @body-color;
+
+	.close {
+      padding: @spacer-2;
+      line-height: 12px;
+		&, &:hover {
+			opacity: 1 !important;
+		}
+	}
+
+	&.alert-primary,
+	&.alert-success 	{ .alert-color(@primary) }
+	&.alert-danger  	{ .alert-color(@danger) }
+	&.alert-warning 	{ .alert-color(@warning) }
+	&.alert-light 		{ .alert-color(@warning) }
+}
+
+// --------------------------------------------------------------- fixed alertts
+
+.alert-fixed-color(@bg, @text) {
+	color: @text;
+	background-color: @bg;
+}
+
+.alert.alert-fixed {
+	border-radius: 0;
+	border: 0;
+	min-height: 64px;
+	padding: @spacer-1 @spacer-3;
+	
+	&.alert-primary, 
+	&.alert-success 	{ .alert-fixed-color(@primary, #FFF) }
+	&.alert-danger  	{ .alert-fixed-color(@danger, #FFF) }
+	&.alert-warning 	{ .alert-fixed-color(@warning, @body-color) }
+	&.alert-light 		{ .alert-fixed-color(@light, @body-color) }
+
+	&, & .alert-body {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+	.alert-body {
+		flex-grow: 1;
+		flex-wrap: wrap;
+	}
+	&.alert-dismissible .alert-body {
+		padding-right: 0;
+	}
+
+}

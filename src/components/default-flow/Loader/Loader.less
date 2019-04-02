@@ -1,0 +1,44 @@
+@import "../../../styles/framework/_functions.less";
+@import "../../../styles/_variables.less";
+
+.progress-ring .progress-ring-background:global,
+.progress-ring .progress-ring-foreground:global {
+	transform: rotate(-90deg);
+	transform-origin: 50% 50%;
+	fill: transparent;
+}
+.progress-ring .progress-ring-background:global {
+	stroke: @light; 
+}
+.progress-ring .progress-ring-foreground:global {
+    stroke: @primary;
+}
+
+.progress-ring .progress-label {
+	display: block;
+	position: relative;
+	z-index: 2;
+	text-align: center;
+
+	cursor: default;
+}
+
+
+.progress-ring-size(@width, @borderWidth) {
+	&, & > svg {
+		width: @width;
+		height: @width;
+	}
+	.progress-label {
+		width: @width;
+		margin-top: -1 * @width;
+		line-height: @width;
+	}
+}
+.progress-ring {
+	.progress-ring-size(120px, 4px);
+}
+
+.progress-ring-xs {
+	.progress-ring-size(16px, 1px);
+}

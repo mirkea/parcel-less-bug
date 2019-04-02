@@ -1,0 +1,17 @@
+@import (reference) "../../../styles/styles.less";
+@import (reference) "../../../styles/_custom-control.less";
+@import (reference, optional) "@{THEME_PATH}/core/Form.less";
+
+.form-control           { .form-control; }
+.form-group             { .form-group; }
+.form-inline            { .form-inline; }
+.row                    { .row; }
+.invalid-feedback       { .invalid-feedback; }
+
+.custom-control         { &:extend(.custom-control all); }
+.custom-checkbox        { &:extend(.custom-checkbox all); }
+.custom-radio           { &:extend(.custom-radio all); }
+.custom-control-inline  { .custom-control-inline; }
+.custom-control-right   { &:extend(.custom-control.custom-control-right); }
+.custom-control-input   { &:extend(.custom-control-input all); }
+.custom-control-label   { &:extend(.custom-control-label all); }

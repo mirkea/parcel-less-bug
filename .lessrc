@@ -1,0 +1,6 @@
+{
+   globalVars: {
+      THEME_PATH: '~ve-ui-theme/src/less'
+   },
+   relativeUrls: true
+}
